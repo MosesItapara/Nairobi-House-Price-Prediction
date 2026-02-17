@@ -1,0 +1,26 @@
+# .gitignore for Nairobi House Price Prediction
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+
+# Checkpoints (regenerable)
+data/checkpoint.json
+data/checkpoint_jiji.json
+data/checkpoint_pw.json
+
+# Large/raw data files — commit only the final merged CSV
+data/nairobi_properties_clean.csv
+data/houses-for-sale.csv
+data/rent_apts.csv
+data/synthetic_only.csv
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
