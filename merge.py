@@ -1,17 +1,3 @@
-"""
-Merge Script — Combines all 4 datasets into raw_listings.csv
-=============================================================
-Run:    python merge.py
-
-Files expected in data/ folder:
-    data/raw_listings.csv              ← your 960 scraped rows
-    data/nairobi_properties_clean.csv  ← kaggle file 1  (~50 rows)
-    data/houses-for-sale.csv           ← kaggle file 2  (~1,876 rows)
-    data/rent_apts.csv                 ← kaggle file 3  (~1,848 rows)
-
-Output:
-    data/raw_listings.csv              ← all merged + shuffled
-"""
 
 import pandas as pd
 import re
@@ -60,7 +46,6 @@ print("="*50)
 print("MERGING FILES")
 print("="*50)
 
-# ── FILE 1: raw_listings.csv (scraped) ───────────────────────
 f1 = "data/raw_listings.csv"
 if os.path.exists(f1):
     df1 = pd.read_csv(f1)
@@ -69,7 +54,6 @@ if os.path.exists(f1):
 else:
     print(f"  WARNING: {f1} not found")
 
-# ── FILE 2: nairobi_properties_clean.csv ─────────────────────
 f2 = "data/nairobi_properties_clean.csv"
 if os.path.exists(f2):
     df2   = pd.read_csv(f2)
@@ -93,7 +77,6 @@ if os.path.exists(f2):
 else:
     print(f"  WARNING: {f2} not found — copy it into data/ folder")
 
-# ── FILE 3: houses-for-sale.csv ──────────────────────────────
 f3 = "data/houses-for-sale.csv"
 if os.path.exists(f3):
     df3   = pd.read_csv(f3)
@@ -121,7 +104,6 @@ if os.path.exists(f3):
 else:
     print(f"  WARNING: {f3} not found — copy it into data/ folder")
 
-# ── FILE 4: rent_apts.csv ────────────────────────────────────
 f4 = "data/rent_apts.csv"
 if os.path.exists(f4):
     df4   = pd.read_csv(f4)
@@ -148,7 +130,6 @@ if os.path.exists(f4):
 else:
     print(f"  WARNING: {f4} not found — copy it into data/ folder")
 
-# ── MERGE + SHUFFLE ──────────────────────────────────────────
 if frames:
     df_final = pd.concat(frames, ignore_index=True)
     df_final = df_final.sample(frac=1, random_state=42).reset_index(drop=True)
